@@ -25,15 +25,15 @@ jobs:
 
       - name: create xcode project for iphone
         run: |
-          toolchain create "MegaShooter" .
+          toolchain xcode create "MegaShooter" .
 
       - name: compile to unsigned ipa file
         run: |
-          cd build/megashooter-ios
-          xcodebuild -project megashooter.xcodeproj -scheme megashooter -configuration Release -sdk iphoneos -allowProvisioningUpdates CODE_SIGNING_ALLOWED=NO
+          cd megashooter-ios
+          xcodebuild -project megashooter.xcodeproj -scheme megashooter -configuration Release -sdk iphoneos CODE_SIGNING_ALLOWED=NO
           mkdir -p Payload
           mv build/Release-iphoneos/megashooter.app Payload/
-          zip -r ../../MegaShooter.ipa Payload/
+          zip -r ../MegaShooter.ipa Payload/
 
       - name: upload finished ipa to github artifacts
         uses: actions/upload-artifact@v4
