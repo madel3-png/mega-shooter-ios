@@ -3,7 +3,7 @@ on: [push, workflow_dispatch]
 
 jobs:
   build-ios:
-    runs-on: macos-15-intel
+    runs-on: macos-13
     steps:
       - name: checkout code from github
         uses: actions/checkout@v4
@@ -18,10 +18,10 @@ jobs:
           pip install kivy-ios
           brew install autoconf automake pkg-config
 
-      - name: build toolchain for pygame ce
+      - name: build toolchain for pygame
         run: |
           toolchain recipe init
-          toolchain build python3 pygame-ce
+          toolchain build python3 pygame
 
       - name: create xcode project for iphone
         run: |
