@@ -3,7 +3,7 @@ on: [push, workflow_dispatch]
 
 jobs:
   build-ios:
-    runs-on: macos-15-intel
+    runs-on: macos-latest
     steps:
       - name: checkout code from github
         uses: actions/checkout@v4
